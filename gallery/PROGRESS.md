@@ -3,8 +3,8 @@
 Claude Code: read this at the start of every session. Update it at the end of every phase.
 
 ## Current status
-- Last completed phase: Phase 5
-- Next phase: Phase 6
+- Last completed phase: Phase 6
+- Next phase: Phase 7
 - Live URL: (owner fills in after the first Vercel deploy)
 
 ## Phase checklist
@@ -13,7 +13,7 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - [x] Phase 3: Data and filter bar
 - [x] Phase 4: Project card
 - [x] Phase 5: Pages and grid
-- [ ] Phase 6: Polish
+- [x] Phase 6: Polish
 - [ ] Phase 7: Docs and final check
 
 ## Decisions
@@ -38,9 +38,16 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - P5: Home shows up to 6 cards per category (`PREVIEW_COUNT` in `Home.jsx`). "View all" link is hidden when a category is empty.
 - P5: `/websites` and `/animations` share `src/pages/CategoryPage.jsx`. Empty state ("Coming soon") lives in `ProjectGrid`.
 - P5: Home has a visually hidden `h1` ("Work"); sections use `h2`. Page styles are in `src/pages/pages.css` (includes `.visually-hidden`).
+- P6: Card titles take a `headingLevel` prop (via `ProjectGrid`): `h2` on category pages, `h3` on home, so no heading level is skipped.
+- P6: Favicon is a simple "Q" monogram SVG (dark tile). Meta description and OG/Twitter title + description added; no OG image yet.
+- P6: Card fade-in is a CSS keyframe on grid items, staggered 50ms each (capped at 8), off under reduced motion.
+- P6: Layout and theme contrast reviewed in code at 360/768/1280/1920 (content capped at 1280px and centered); no layout changes were needed. No browser screenshots were taken.
 
 ## Blockers
 (Write anything that stopped you. Say exactly what the owner must do.)
+
+## TODO (owner)
+- OG image: add a 1200×630 image to `public/` and an `og:image` tag in `index.html` (absolute URL, needs the live domain).
 
 ## Notes for next session
 (Short. Only what the next session needs to know.)
@@ -48,5 +55,5 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - Pages are done in `src/pages/`. Router is in `src/App.jsx`, `BrowserRouter` in `src/main.jsx`.
 - `App.jsx` renders `<Header />`, `<FilterBar />`, then `<main>` with the routes.
 - Use `getProjects('websites' | 'animations')` from `src/data/getProjects.js` in cards/pages. Entries have no `videoUrl` yet, so the fallback block will show.
-- `ProjectGrid` renders `ProjectCard`s. Card headings are `h3`; on category pages they follow the `h1` directly (check in Phase 6).
+- `ProjectGrid` renders `ProjectCard`s and passes `headingLevel` to the card title.
 - Theme variables: `--bg`, `--surface`, `--text`, `--text-muted`, `--border`, `--accent` (in `src/styles/theme.css`).

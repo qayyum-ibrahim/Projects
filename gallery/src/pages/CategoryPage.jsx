@@ -7,7 +7,7 @@ export default function CategoryPage({ title, category }) {
   return (
     <div className="page">
       <h1 className="page-title">{title}</h1>
-      <ProjectGrid projects={getProjects(category)} />
+      <ProjectGrid projects={getProjects(category)} headingLevel={2} />
     </div>
   )
 }

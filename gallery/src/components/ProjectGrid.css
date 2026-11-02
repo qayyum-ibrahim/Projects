@@ -7,6 +7,19 @@
   list-style: none;
 }
 
+/* Cards fade in one after another (capped so long lists do not lag). */
+.project-grid > li {
+  animation: project-grid-in 0.4s ease both;
+  animation-delay: calc(min(var(--i, 0), 8) * 50ms);
+}
+
+@keyframes project-grid-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
 .project-grid-empty {
   display: flex;
   align-items: center;
@@ -35,5 +48,11 @@
   .project-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-grid > li {
+    animation: none;
   }
 }

@@ -9,8 +9,9 @@ function hueFromId(id) {
   return hash
 }
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, headingLevel = 3 }) {
   const { id, title, type, liveUrl, videoUrl, posterUrl } = project
+  const Heading = `h${headingLevel}`
   const cardRef = useRef(null)
   const videoRef = useRef(null)
   const canHover = useMediaQuery('(hover: hover)')
@@ -98,7 +99,7 @@ export default function ProjectCard({ project }) {
       </div>
 
       <div className="project-card-overlay">
-        <h3 className="project-card-title">{title}</h3>
+        <Heading className="project-card-title">{title}</Heading>
         <p className="project-card-type">{type}</p>
         <a
           className="project-card-link"
