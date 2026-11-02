@@ -3,8 +3,8 @@
 Claude Code: read this at the start of every session. Update it at the end of every phase.
 
 ## Current status
-- Last completed phase: Phase 4
-- Next phase: Phase 5
+- Last completed phase: Phase 5
+- Next phase: Phase 6
 - Live URL: (owner fills in after the first Vercel deploy)
 
 ## Phase checklist
@@ -12,7 +12,7 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - [x] Phase 2: Theme and header
 - [x] Phase 3: Data and filter bar
 - [x] Phase 4: Project card
-- [ ] Phase 5: Pages and grid
+- [x] Phase 5: Pages and grid
 - [ ] Phase 6: Polish
 - [ ] Phase 7: Docs and final check
 
@@ -34,6 +34,10 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - P4: Video `src` is set only after the card is within 200px of the screen; it plays when near and pauses when it leaves. A video or poster error falls back to the block.
 - P4: Overlay uses a blurred `--bg` scrim so it follows the theme. Title is an `h3`; the link has an aria-label that says it opens a new tab.
 - P4: Touch: the link has `pointer-events: none` until the first tap opens the overlay; a `pointerdown` outside the card closes it. Added `src/hooks/useMediaQuery.js`.
+- P5: Grid breakpoints: 2 columns from 640px, 3 from 1024px. Grid is a `ul` of cards.
+- P5: Home shows up to 6 cards per category (`PREVIEW_COUNT` in `Home.jsx`). "View all" link is hidden when a category is empty.
+- P5: `/websites` and `/animations` share `src/pages/CategoryPage.jsx`. Empty state ("Coming soon") lives in `ProjectGrid`.
+- P5: Home has a visually hidden `h1` ("Work"); sections use `h2`. Page styles are in `src/pages/pages.css` (includes `.visually-hidden`).
 
 ## Blockers
 (Write anything that stopped you. Say exactly what the owner must do.)
@@ -41,8 +45,8 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 ## Notes for next session
 (Short. Only what the next session needs to know.)
 - Git repo root is the parent `projects` folder; the app lives in `gallery/`. In Vercel, set Root Directory to `gallery`.
-- Pages are placeholders in `src/pages/`. Router is in `src/App.jsx`, `BrowserRouter` in `src/main.jsx`.
+- Pages are done in `src/pages/`. Router is in `src/App.jsx`, `BrowserRouter` in `src/main.jsx`.
 - `App.jsx` renders `<Header />`, `<FilterBar />`, then `<main>` with the routes.
 - Use `getProjects('websites' | 'animations')` from `src/data/getProjects.js` in cards/pages. Entries have no `videoUrl` yet, so the fallback block will show.
-- `ProjectCard` (`src/components/ProjectCard.jsx`) takes `project` and is not used by any page yet; Phase 5 wires it into the grid.
+- `ProjectGrid` renders `ProjectCard`s. Card headings are `h3`; on category pages they follow the `h1` directly (check in Phase 6).
 - Theme variables: `--bg`, `--surface`, `--text`, `--text-muted`, `--border`, `--accent` (in `src/styles/theme.css`).

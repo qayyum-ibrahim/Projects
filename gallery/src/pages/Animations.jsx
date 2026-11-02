@@ -1,3 +1,5 @@
+import CategoryPage from './CategoryPage.jsx'
+
 export default function Animations() {
-  return <h1>Animations</h1>
+  return <CategoryPage title="Animations" category="animations" />
 }

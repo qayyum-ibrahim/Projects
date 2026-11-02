@@ -1,3 +1,5 @@
+import CategoryPage from './CategoryPage.jsx'
+
 export default function Websites() {
-  return <h1>Websites</h1>
+  return <CategoryPage title="Websites" category="websites" />
 }
