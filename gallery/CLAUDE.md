@@ -70,5 +70,5 @@ A gallery site that only shows the owner's work. Nothing else.
 - Never commit `.env.local` or `node_modules`.
 
 ## Commands
-- `/continue` runs the next unfinished phase.
+- `/next-phase` runs the next unfinished phase.
 - `/add-project` adds an existing project to the gallery (see `.claude/commands/add-project.md`).

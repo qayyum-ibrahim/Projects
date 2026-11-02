@@ -12,7 +12,7 @@
 5. Open Claude Code in the folder: `claude`
 
 ## Every session
-- Type `/continue`. It reads the progress file and does the next phase.
+- Type `/next-phase`. It reads the progress file and does the next phase.
 - When a phase finishes, it commits, pushes, and stops. Start a new session (`/clear` or a new terminal) before the next phase to save tokens.
 
 ## Add an existing project
