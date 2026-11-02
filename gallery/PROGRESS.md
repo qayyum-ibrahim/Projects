@@ -3,8 +3,8 @@
 Claude Code: read this at the start of every session. Update it at the end of every phase.
 
 ## Current status
-- Last completed phase: Phase 6
-- Next phase: Phase 7
+- Last completed phase: Phase 7
+- Next phase: none. **Gallery complete.**
 - Live URL: (owner fills in after the first Vercel deploy)
 
 ## Phase checklist
@@ -14,7 +14,7 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - [x] Phase 4: Project card
 - [x] Phase 5: Pages and grid
 - [x] Phase 6: Polish
-- [ ] Phase 7: Docs and final check
+- [x] Phase 7: Docs and final check
 
 ## Decisions
 (Write each choice you made without asking. One line each, with the phase number.)
@@ -42,6 +42,8 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - P6: Favicon is a simple "Q" monogram SVG (dark tile). Meta description and OG/Twitter title + description added; no OG image yet.
 - P6: Card fade-in is a CSS keyframe on grid items, staggered 50ms each (capped at 8), off under reduced motion.
 - P6: Layout and theme contrast reviewed in code at 360/768/1280/1920 (content capped at 1280px and centered); no layout changes were needed. No browser screenshots were taken.
+- P7: README covers local run, project fields, Cloudinary links (with optional `q_auto,f_auto` and `.jpg` poster tip), removing samples, and Vercel deploys.
+- P7: Final check done with `npm run build` + `vite preview` and HTTP requests, not a browser. Client-side rendering was checked through the built bundle.
 
 ## Blockers
 (Write anything that stopped you. Say exactly what the owner must do.)
@@ -51,6 +53,7 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 
 ## Notes for next session
 (Short. Only what the next session needs to know.)
+- Final check (P7): `/`, `/websites`, `/animations`, unknown route and `/favicon.svg` all return 200 from the preview server (SPA fallback works). Bundle has UniVibe, no sample entries, the "Coming soon" and not-found text, and `noopener noreferrer` links.
 - Git repo root is the parent `projects` folder; the app lives in `gallery/`. In Vercel, set Root Directory to `gallery`.
 - Pages are done in `src/pages/`. Router is in `src/App.jsx`, `BrowserRouter` in `src/main.jsx`.
 - `App.jsx` renders `<Header />`, `<FilterBar />`, then `<main>` with the routes.
