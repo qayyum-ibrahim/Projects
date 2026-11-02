@@ -1,0 +1,152 @@
+.project-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.project-card-media,
+.project-card-fallback,
+.project-card-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Fallback block: shown when there is no video, or under it while it loads. */
+.project-card-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--hue) 40% 24%),
+    hsl(calc(var(--hue) + 40) 40% 14%)
+  );
+}
+
+.project-card-fallback span {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: hsl(var(--hue) 30% 92%);
+}
+
+:root[data-theme='light'] .project-card-fallback {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--hue) 55% 88%),
+    hsl(calc(var(--hue) + 40) 50% 78%)
+  );
+}
+
+:root[data-theme='light'] .project-card-fallback span {
+  color: hsl(var(--hue) 45% 18%);
+}
+
+.project-card-video {
+  object-fit: cover;
+}
+
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 20px;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.project-card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.project-card-type {
+  margin: 0 0 12px;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.project-card-link {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--bg);
+  text-decoration: none;
+  background: var(--text);
+  border-radius: 999px;
+  transform: translateY(4px);
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.project-card-link:hover {
+  opacity: 0.85;
+}
+
+.project-card-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Show the overlay: keyboard focus, or the first tap on touch. */
+.project-card:focus-within .project-card-overlay,
+.project-card.is-active .project-card-overlay {
+  opacity: 1;
+}
+
+.project-card:focus-within .project-card-link,
+.project-card.is-active .project-card-link {
+  transform: none;
+}
+
+/* Desktop: hover shows it. */
+@media (hover: hover) {
+  .project-card {
+    cursor: default;
+  }
+
+  .project-card:hover .project-card-overlay {
+    opacity: 1;
+  }
+
+  .project-card:hover .project-card-link {
+    transform: none;
+  }
+}
+
+/* Touch: the hidden button cannot be tapped until the overlay is open. */
+@media (hover: none) {
+  .project-card:not(.is-active) .project-card-link {
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card-overlay,
+  .project-card-link {
+    transition: none;
+  }
+
+  .project-card-link {
+    transform: none;
+  }
+}
