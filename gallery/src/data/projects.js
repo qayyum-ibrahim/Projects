@@ -9,6 +9,13 @@ const projects = [
     category: 'websites',
     liveUrl: 'https://univibe.ng',
   },
+  {
+    id: 'saffron-and-smoke',
+    title: 'Saffron & Smoke',
+    type: 'Restaurant Website',
+    category: 'websites',
+    liveUrl: 'https://site-restaurant-vert.vercel.app/',
+  },
 ]
 
 export default projects
