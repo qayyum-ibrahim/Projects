@@ -16,7 +16,7 @@ const projects = [
     category: 'websites',
     liveUrl: 'https://site-restaurant-vert.vercel.app/',
     videoUrl:
-      'https://res.cloudinary.com/dlxovrmtr/video/upload/q_auto,f_auto/v1793746940/projects/site-restaurant/Saffron_Smoke.mkv',
+      'https://res.cloudinary.com/dlxovrmtr/video/upload/q_auto,f_auto/v1793746940/projects/site-restaurant/Saffron_Smoke.mp4',
   },
 ]
 
