@@ -18,6 +18,15 @@ const projects = [
     videoUrl:
       'https://res.cloudinary.com/dlxovrmtr/video/upload/q_auto,f_auto/v1793746940/projects/site-restaurant/Saffron_Smoke.mp4',
   },
+  {
+    id: 'marina-crest-hotel',
+    title: 'Marina Crest Hotel',
+    type: 'Hotel Website',
+    category: 'websites',
+    liveUrl: 'https://site-hotel-ebon.vercel.app/',
+    videoUrl:
+      'https://res.cloudinary.com/dlxovrmtr/video/upload/v1793856626/projects/videos/site-hotel.mp4',
+  },
 ]
 
 export default projects
