@@ -36,6 +36,15 @@ const projects = [
     videoUrl:
       'https://res.cloudinary.com/dlxovrmtr/video/upload/v1793954647/projects/videos/site-real-estate.mp4',
   },
+  {
+    id: 'kora-goods',
+    title: 'Kora Goods',
+    type: 'E-commerce Website',
+    category: 'websites',
+    liveUrl: 'https://site-ecommerce-ten.vercel.app/',
+    videoUrl:
+      'https://res.cloudinary.com/dlxovrmtr/video/upload/v1793954866/projects/videos/site-ecommerce.mp4',
+  },
 ]
 
 export default projects
