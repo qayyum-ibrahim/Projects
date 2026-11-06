@@ -27,6 +27,15 @@ const projects = [
     videoUrl:
       'https://res.cloudinary.com/dlxovrmtr/video/upload/v1793856626/projects/videos/site-hotel.mp4',
   },
+  {
+    id: 'haven-estates',
+    title: 'Haven Estates',
+    type: 'Real Estate Website',
+    category: 'websites',
+    liveUrl: 'https://site-real-estate.vercel.app/',
+    videoUrl:
+      'https://res.cloudinary.com/dlxovrmtr/video/upload/v1793954647/projects/videos/site-real-estate.mp4',
+  },
 ]
 
 export default projects
