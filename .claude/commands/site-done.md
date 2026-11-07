@@ -17,4 +17,4 @@ Do this. Do not ask questions.
    Open Claude Code in `projects/gallery` and paste:
    `/add-project <Fictional name> | <Type> | websites | <live url>`
 
-   Add `| <cloudinary video url>` at the end once you have a video. Then set "In gallery" to yes in `SITES.md` yourself, or run this command again after.
+   Card image: save a full-page screenshot as `gallery/public/images/<gallery id>.<any format>`, where the gallery id is the fictional name in lowercase with dashes (for example `kora-goods`). Then run `npm run images` in `projects/gallery`, commit and push. Then set "In gallery" to yes in `SITES.md` yourself, or run this command again after.

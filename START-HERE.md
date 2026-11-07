@@ -36,14 +36,13 @@
 1. Back in `projects`, start Claude Code and type: `/site-done restaurant https://your-live-link`
    It updates `SITES.md` and prints the exact `/add-project` line for the gallery.
 2. Open Claude Code in `projects/gallery` and paste that line.
-3. Record a short video of the site, upload it to Cloudinary, and add the video link to the gallery entry.
-   You can do this at any time. Without a video the card shows a colored block.
+3. Take a full-page screenshot of the site (Chrome DevTools > Cmd+Shift+P > "Capture full size screenshot", about 1440px wide).
+   Name it after the gallery id (the fictional name in lowercase with dashes, for example `kora-goods.png`) and put it in `gallery/public/images/`.
+   In `projects/gallery` run `npm run images`, then commit and push. The script compresses it to `<id>.jpg` and deletes the original.
+   You can do this at any time. Without an image the card shows a colored block. The gallery no longer uses videos.
 
 ## Notes
 - Every site is a fictional demo brand with fake data. The footer says so. This keeps the sites honest.
 - If a command does not show up, you started Claude Code in the wrong folder.
   `/new-site` and `/site-done` work in `projects`. `/next-phase` works inside a `site-` folder.
 - The file `.claude/settings.json` lets Claude Code run npm and git commands without asking. If it still asks, choose "always allow".
-
-<!-- TO UPDATE VIDEO -->
-In src/data/projects.js, set videoUrl for the project "Saffron & Smoke" to https://res.cloudinary.com/dlxovrmtr/video/upload/q_auto,f_auto/v1793746940/projects/site-restaurant/Saffron_Smoke.mkv . Change nothing else. Run npm run build, then commit with the message "add video: Saffron & Smoke" and push to main.
