@@ -1,6 +1,6 @@
 // Real projects. Add one entry per work. Newest first.
 // Fields: id, title, type, category ('websites' | 'animations'), liveUrl,
-// videoUrl (optional, Cloudinary link), posterUrl (optional).
+// imageUrl (optional, full-page screenshot link; it scrolls inside the card).
 const projects = [
   {
     id: 'univibe',
@@ -15,8 +15,6 @@ const projects = [
     type: 'Restaurant Website',
     category: 'websites',
     liveUrl: 'https://site-restaurant-vert.vercel.app/',
-    videoUrl:
-      'https://res.cloudinary.com/dlxovrmtr/video/upload/v1793858021/projects/videos/site-restaurant.mp4',
   },
   {
     id: 'marina-crest-hotel',
@@ -24,8 +22,6 @@ const projects = [
     type: 'Hotel Website',
     category: 'websites',
     liveUrl: 'https://site-hotel-ebon.vercel.app/',
-    videoUrl:
-      'https://res.cloudinary.com/dlxovrmtr/video/upload/v1793856626/projects/videos/site-hotel.mp4',
   },
   {
     id: 'haven-estates',
@@ -33,8 +29,6 @@ const projects = [
     type: 'Real Estate Website',
     category: 'websites',
     liveUrl: 'https://site-real-estate.vercel.app/',
-    videoUrl:
-      'https://res.cloudinary.com/dlxovrmtr/video/upload/v1793954647/projects/videos/site-real-estate.mp4',
   },
   {
     id: 'kora-goods',
@@ -42,8 +36,6 @@ const projects = [
     type: 'E-commerce Website',
     category: 'websites',
     liveUrl: 'https://site-ecommerce-ten.vercel.app/',
-    videoUrl:
-      'https://res.cloudinary.com/dlxovrmtr/video/upload/v1793954866/projects/videos/site-ecommerce.mp4',
   },
 ]
 

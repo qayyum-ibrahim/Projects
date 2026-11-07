@@ -44,6 +44,7 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - P6: Layout and theme contrast reviewed in code at 360/768/1280/1920 (content capped at 1280px and centered); no layout changes were needed. No browser screenshots were taken.
 - P7: README covers local run, project fields, Cloudinary links (with optional `q_auto,f_auto` and `.jpg` poster tip), removing samples, and Vercel deploys.
 - P7: Final check done with `npm run build` + `vite preview` and HTTP requests, not a browser. Client-side rendering was checked through the built bundle.
+- Change (owner request): videos replaced by a full-page screenshot (`imageUrl`) that scrolls down and back up inside the card at 80px/s (`SCROLL_SPEED` in `ProjectCard.jsx`), resting at each end. `videoUrl`/`posterUrl` removed; the 4 old video links were dropped from `projects.js`, so those cards show the colored block until images are added.
 
 ## Blockers
 (Write anything that stopped you. Say exactly what the owner must do.)

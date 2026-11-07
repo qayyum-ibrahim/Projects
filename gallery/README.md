@@ -1,6 +1,6 @@
 # Work Gallery
 
-A small site that shows only my work. Each project is a card with a short looping video. Built with Vite, React and React Router. Hosted on Vercel.
+A small site that shows only my work. Each project is a card with a full-page screenshot that slowly scrolls inside it. Built with Vite, React and React Router. Hosted on Vercel.
 
 Routes: `/` (everything), `/websites`, `/animations`.
 
@@ -26,8 +26,7 @@ All projects live in `src/data/projects.js`. Adding a work means adding one entr
   type: 'Ticketing Platform',
   category: 'websites',
   liveUrl: 'https://univibe.ng',
-  videoUrl: 'https://res.cloudinary.com/<cloud>/video/upload/<file>.mp4', // optional
-  posterUrl: 'https://res.cloudinary.com/<cloud>/video/upload/<file>.jpg', // optional
+  imageUrl: 'https://res.cloudinary.com/<cloud>/image/upload/<file>.png', // optional
 },
 ```
 
@@ -38,25 +37,23 @@ All projects live in `src/data/projects.js`. Adding a work means adding one entr
 | `type` | yes | Short label under the title (for example "Ticketing Platform"). |
 | `category` | yes | Exactly `websites` or `animations`. Decides which page shows it. |
 | `liveUrl` | yes | Full link to the live site. Opens in a new tab. |
-| `videoUrl` | no | Link to the preview video. Without it the card shows a colored block with the title. |
-| `posterUrl` | no | Still image shown before the video plays and for visitors who turn off motion. |
+| `imageUrl` | no | Link to a full-page screenshot of the site. Without it the card shows a colored block with the title. |
 
 Cards show in the order of the list.
 
 In Claude Code you can also run:
 
 ```
-/add-project Title | Type | websites | https://live-url.com | https://video-url (optional)
+/add-project Title | Type | websites | https://live-url.com | https://image-url (optional)
 ```
 
-## Add the Cloudinary video link
+## Add the full-page image
 
-1. Upload the recording to Cloudinary (Media Library > Upload).
-2. Open the video and copy its URL (it ends in `.mp4`). Paste it as `videoUrl`.
-3. Optional: smaller files load faster. Add `q_auto,f_auto,w_960` after `/upload/` in the URL, for example `.../video/upload/q_auto,f_auto,w_960/my-video.mp4`.
-4. Optional poster: use the same URL but change the ending from `.mp4` to `.jpg`. Cloudinary turns the first frame into an image. Paste it as `posterUrl`.
+1. Take a full-page screenshot of the site (for example Chrome DevTools > Cmd+Shift+P > "Capture full size screenshot"). A desktop width around 1440px works best.
+2. Upload it to Cloudinary (Media Library > Upload), open it and copy its URL. Paste it as `imageUrl`.
+3. Recommended: add `q_auto,f_auto,w_1200` after `/upload/` so it loads fast, for example `.../image/upload/q_auto,f_auto,w_1200/my-site.png`.
 
-Keep videos short (5–15 seconds) and without sound. They play muted on a loop, and only when the card is near the screen.
+The image is pinned to the top of the card, scrolls to the bottom and back up on a loop, and only moves while the card is on screen. Visitors who turn off motion see the top of the page, still.
 
 ## Sample data
 

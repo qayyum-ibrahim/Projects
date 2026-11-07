@@ -5,10 +5,10 @@ Read this file first in every session. Keep it short in your head. Follow it exa
 ## What this project is
 A gallery site that only shows the owner's work. Nothing else.
 - No about page, no contact form, no blog.
-- Each project is a card with a short looping video preview.
+- Each project is a card with a full-page screenshot that slowly scrolls inside it.
 - Desktop: hover on a card shows the project title, its type and a "Visit live site" button.
 - Mobile: first tap on a card shows the same overlay. The button inside opens the live site.
-- The owner records the videos and hosts them on Cloudinary. We only use the links.
+- The owner takes the full-page screenshots and hosts them (for example on Cloudinary). We only use the links. No videos.
 
 ## Routes
 - `/` shows both categories. Each has a heading and a link to its page.
@@ -33,15 +33,15 @@ A gallery site that only shows the owner's work. Nothing else.
 
 ## Data
 - All projects live in `src/data/projects.js`. Adding a work means adding one entry. No other code change.
-- Entry fields: `id`, `title`, `type` (for example "Ticketing Platform"), `category` ("websites" or "animations"), `liveUrl`, `videoUrl` (optional), `posterUrl` (optional).
-- No video yet? The card shows a clean colored block with the title. It must still look good.
+- Entry fields: `id`, `title`, `type` (for example "Ticketing Platform"), `category` ("websites" or "animations"), `liveUrl`, `imageUrl` (optional, full-page screenshot).
+- No image yet? The card shows a clean colored block with the title. It must still look good.
 - Sample entries for development live in `src/data/projects.sample.js`. They show only when `VITE_SHOW_SAMPLES=true` in `.env.local`. Never show samples in production.
 - Never invent a real URL. Never invent a project. Only the owner supplies real entries.
 - Real entries so far: UniVibe, type "Ticketing Platform", websites, `https://univibe.ng`.
 
 ## Cards
-- Video: `muted`, `loop`, `playsInline`, `autoPlay`, `preload="metadata"`. Load and play only when near the screen (IntersectionObserver).
-- Respect `prefers-reduced-motion`: show the poster or fallback block, no autoplay.
+- Image: full width, pinned to the top. It scrolls down to the bottom and back up on a loop, at a steady speed, with a short rest at each end. Load it only when near the screen and pause the scroll when off screen (IntersectionObserver).
+- Respect `prefers-reduced-motion`: show the top of the image, no scroll.
 - The overlay must work with the keyboard (focus shows it) and with touch (tap shows it, tap outside hides it).
 - The live link opens in a new tab with `rel="noopener noreferrer"`.
 

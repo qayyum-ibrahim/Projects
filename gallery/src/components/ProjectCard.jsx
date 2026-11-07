@@ -9,26 +9,29 @@ function hueFromId(id) {
   return hash
 }
 
+// Scroll speed of the full-page image, in pixels per second.
+const SCROLL_SPEED = 80
+
 export default function ProjectCard({ project, headingLevel = 3 }) {
-  const { id, title, type, liveUrl, videoUrl, posterUrl } = project
+  const { id, title, type, liveUrl, imageUrl } = project
   const Heading = `h${headingLevel}`
   const cardRef = useRef(null)
-  const videoRef = useRef(null)
+  const imageRef = useRef(null)
   const canHover = useMediaQuery('(hover: hover)')
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
 
   const [active, setActive] = useState(false)
   const [near, setNear] = useState(false)
   const [started, setStarted] = useState(false)
-  const [videoFailed, setVideoFailed] = useState(false)
-  const [posterFailed, setPosterFailed] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+  const [imageFailed, setImageFailed] = useState(false)
+  const [distance, setDistance] = useState(0)
 
-  const showVideo = Boolean(videoUrl) && !reducedMotion && !videoFailed
-  const showPoster = !showVideo && Boolean(posterUrl) && !posterFailed
+  const showImage = Boolean(imageUrl) && !imageFailed
 
-  // Load the video only once the card comes near the screen.
+  // Load the image only once the card comes near the screen.
   useEffect(() => {
-    if (!showVideo) return
+    if (!showImage) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         setNear(entry.isIntersecting)
@@ -38,15 +41,25 @@ export default function ProjectCard({ project, headingLevel = 3 }) {
     )
     observer.observe(cardRef.current)
     return () => observer.disconnect()
-  }, [showVideo])
+  }, [showImage])
 
-  // Play while near the screen, pause when it leaves.
+  // How far the image can scroll: its height minus the card height.
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-    if (near) video.play().catch(() => {})
-    else video.pause()
-  }, [near, started])
+    if (!loaded) return
+    const measure = () => {
+      const image = imageRef.current
+      if (!image) return
+      setDistance(Math.max(0, image.offsetHeight - cardRef.current.clientHeight))
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(cardRef.current)
+    return () => observer.disconnect()
+  }, [loaded])
+
+  const scrolling = loaded && distance > 0 && !reducedMotion
+  // Down and back up, plus a short rest at each end (30% of the loop).
+  const duration = (2 * distance) / SCROLL_SPEED / 0.7
 
   // Touch: a tap outside the card hides the overlay.
   useEffect(() => {
@@ -73,27 +86,24 @@ export default function ProjectCard({ project, headingLevel = 3 }) {
         <div className="project-card-fallback">
           <span>{title}</span>
         </div>
-        {showVideo && started && (
-          <video
-            ref={videoRef}
-            className="project-card-video"
-            src={videoUrl}
-            poster={posterUrl}
-            muted
-            loop
-            playsInline
-            autoPlay
-            preload="metadata"
-            onError={() => setVideoFailed(true)}
-          />
-        )}
-        {showPoster && (
+        {showImage && started && (
           <img
-            className="project-card-video"
-            src={posterUrl}
+            ref={imageRef}
+            className={`project-card-image${loaded ? ' is-loaded' : ''}${scrolling ? ' is-scrolling' : ''}`}
+            style={
+              scrolling
+                ? {
+                    '--scroll-distance': `${distance}px`,
+                    '--scroll-duration': `${duration}s`,
+                    animationPlayState: near ? 'running' : 'paused',
+                  }
+                : undefined
+            }
+            src={imageUrl}
             alt=""
-            loading="lazy"
-            onError={() => setPosterFailed(true)}
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            onError={() => setImageFailed(true)}
           />
         )}
       </div>
