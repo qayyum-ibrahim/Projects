@@ -52,6 +52,13 @@ const projects = [
     category: 'websites',
     liveUrl: 'https://site-booking-iota.vercel.app/',
   },
+  {
+    id: 'pulse-fitness-club',
+    title: 'Pulse Fitness Club',
+    type: 'Membership Website',
+    category: 'websites',
+    liveUrl: 'https://site-membership.vercel.app/',
+  },
 ]
 
 export default projects
