@@ -44,6 +44,13 @@ const projects = [
     category: 'websites',
     liveUrl: 'https://site-saas-two.vercel.app/',
   },
+  {
+    id: 'halo-studio',
+    title: 'Halo Studio',
+    type: 'Booking Website',
+    category: 'websites',
+    liveUrl: 'https://site-booking-iota.vercel.app/',
+  },
 ]
 
 export default projects
