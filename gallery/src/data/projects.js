@@ -2,13 +2,14 @@
 // Fields: id, title, type, category ('websites' | 'animations'), liveUrl,
 // The card image is public/images/<id>.jpg (run `npm run images` after adding one).
 const projects = [
-  {
-    id: 'univibe',
-    title: 'UniVibe',
-    type: 'Ticketing Platform',
-    category: 'websites',
-    liveUrl: 'https://univibe.ng',
-  },
+  // Hidden until its full-page image is ready (public/images/univibe.jpg).
+  // {
+  //   id: 'univibe',
+  //   title: 'UniVibe',
+  //   type: 'Ticketing Platform',
+  //   category: 'websites',
+  //   liveUrl: 'https://univibe.ng',
+  // },
   {
     id: 'saffron-and-smoke',
     title: 'Saffron & Smoke',
