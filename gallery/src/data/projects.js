@@ -37,6 +37,13 @@ const projects = [
     category: 'websites',
     liveUrl: 'https://site-ecommerce-ten.vercel.app/',
   },
+  {
+    id: 'tallybase',
+    title: 'Tallybase',
+    type: 'SaaS Website',
+    category: 'websites',
+    liveUrl: 'https://site-saas-two.vercel.app/',
+  },
 ]
 
 export default projects
