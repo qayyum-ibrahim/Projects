@@ -45,6 +45,7 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - P7: README covers local run, project fields, Cloudinary links (with optional `q_auto,f_auto` and `.jpg` poster tip), removing samples, and Vercel deploys.
 - P7: Final check done with `npm run build` + `vite preview` and HTTP requests, not a browser. Client-side rendering was checked through the built bundle.
 - Change (owner request): videos replaced by a full-page screenshot (`imageUrl`) that scrolls down and back up inside the card at 80px/s (`SCROLL_SPEED` in `ProjectCard.jsx`), resting at each end. `videoUrl`/`posterUrl` removed; the 4 old video links were dropped from `projects.js`, so those cards show the colored block until images are added.
+- Change (owner request): images are local, not URLs. Card loads `/images/<id>.jpg`; missing file falls back to the colored block. `npm run images` (`scripts/compress-images.mjs`) uses macOS `sips` (no new package): max 1440px wide, JPEG quality 70, original deleted, finished files listed in `public/images/.compressed` and skipped after that.
 
 ## Blockers
 (Write anything that stopped you. Say exactly what the owner must do.)

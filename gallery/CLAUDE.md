@@ -8,7 +8,7 @@ A gallery site that only shows the owner's work. Nothing else.
 - Each project is a card with a full-page screenshot that slowly scrolls inside it.
 - Desktop: hover on a card shows the project title, its type and a "Visit live site" button.
 - Mobile: first tap on a card shows the same overlay. The button inside opens the live site.
-- The owner takes the full-page screenshots and hosts them (for example on Cloudinary). We only use the links. No videos.
+- The owner takes the full-page screenshots and puts them in `public/images/`, named with the project slug (`id`). No videos, no image URLs.
 
 ## Routes
 - `/` shows both categories. Each has a heading and a link to its page.
@@ -33,7 +33,8 @@ A gallery site that only shows the owner's work. Nothing else.
 
 ## Data
 - All projects live in `src/data/projects.js`. Adding a work means adding one entry. No other code change.
-- Entry fields: `id`, `title`, `type` (for example "Ticketing Platform"), `category` ("websites" or "animations"), `liveUrl`, `imageUrl` (optional, full-page screenshot).
+- Entry fields: `id`, `title`, `type` (for example "Ticketing Platform"), `category` ("websites" or "animations"), `liveUrl`. The card image is `public/images/<id>.jpg`, found by the `id`.
+- Images are compressed with `npm run images` (`scripts/compress-images.mjs`, macOS `sips`): resized to max 1440px wide, saved as `<id>.jpg`, original deleted. Finished files are listed in `public/images/.compressed` and never touched again.
 - No image yet? The card shows a clean colored block with the title. It must still look good.
 - Sample entries for development live in `src/data/projects.sample.js`. They show only when `VITE_SHOW_SAMPLES=true` in `.env.local`. Never show samples in production.
 - Never invent a real URL. Never invent a project. Only the owner supplies real entries.

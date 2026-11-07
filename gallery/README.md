@@ -26,34 +26,35 @@ All projects live in `src/data/projects.js`. Adding a work means adding one entr
   type: 'Ticketing Platform',
   category: 'websites',
   liveUrl: 'https://univibe.ng',
-  imageUrl: 'https://res.cloudinary.com/<cloud>/image/upload/<file>.png', // optional
 },
 ```
 
 | Field | Required | What it is |
 | --- | --- | --- |
-| `id` | yes | Unique name, lowercase with dashes (for example `harbor-inn`). |
+| `id` | yes | Unique name, lowercase with dashes (for example `harbor-inn`). Also the image file name. |
 | `title` | yes | Project name shown on the card. |
 | `type` | yes | Short label under the title (for example "Ticketing Platform"). |
 | `category` | yes | Exactly `websites` or `animations`. Decides which page shows it. |
 | `liveUrl` | yes | Full link to the live site. Opens in a new tab. |
-| `imageUrl` | no | Link to a full-page screenshot of the site. Without it the card shows a colored block with the title. |
 
 Cards show in the order of the list.
 
 In Claude Code you can also run:
 
 ```
-/add-project Title | Type | websites | https://live-url.com | https://image-url (optional)
+/add-project Title | Type | websites | https://live-url.com
 ```
 
 ## Add the full-page image
 
 1. Take a full-page screenshot of the site (for example Chrome DevTools > Cmd+Shift+P > "Capture full size screenshot"). A desktop width around 1440px works best.
-2. Upload it to Cloudinary (Media Library > Upload), open it and copy its URL. Paste it as `imageUrl`.
-3. Recommended: add `q_auto,f_auto,w_1200` after `/upload/` so it loads fast, for example `.../image/upload/q_auto,f_auto,w_1200/my-site.png`.
+2. Name it after the project `id` (any format, for example `harbor-inn.png`) and put it in `public/images/`.
+3. Run `npm run images`. It resizes new images to at most 1440px wide, saves them as `harbor-inn.jpg` and deletes the original. Images it already compressed are listed in `public/images/.compressed` and are never touched again. It uses `sips`, which comes with macOS.
+4. Commit and push the `.jpg` and `.compressed` files.
 
-The image is pinned to the top of the card, scrolls to the bottom and back up on a loop, and only moves while the card is on screen. Visitors who turn off motion see the top of the page, still.
+Without an image the card shows a colored block with the title. The image is pinned to the top of the card, scrolls to the bottom and back up on a loop, and only moves while the card is on screen. Visitors who turn off motion see the top of the page, still.
+
+To replace an image, drop a new file with the same name in a format other than `.jpg` (for example `.png`) and run the script again, or remove its line from `.compressed` first.
 
 ## Sample data
 

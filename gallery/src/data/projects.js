@@ -1,6 +1,6 @@
 // Real projects. Add one entry per work. Newest first.
 // Fields: id, title, type, category ('websites' | 'animations'), liveUrl,
-// imageUrl (optional, full-page screenshot link; it scrolls inside the card).
+// The card image is public/images/<id>.jpg (run `npm run images` after adding one).
 const projects = [
   {
     id: 'univibe',

@@ -13,7 +13,9 @@ function hueFromId(id) {
 const SCROLL_SPEED = 80
 
 export default function ProjectCard({ project, headingLevel = 3 }) {
-  const { id, title, type, liveUrl, imageUrl } = project
+  const { id, title, type, liveUrl } = project
+  // Full-page screenshot, named after the project id (see npm run images).
+  const imageUrl = `/images/${id}.jpg`
   const Heading = `h${headingLevel}`
   const cardRef = useRef(null)
   const imageRef = useRef(null)
@@ -27,7 +29,7 @@ export default function ProjectCard({ project, headingLevel = 3 }) {
   const [imageFailed, setImageFailed] = useState(false)
   const [distance, setDistance] = useState(0)
 
-  const showImage = Boolean(imageUrl) && !imageFailed
+  const showImage = !imageFailed
 
   // Load the image only once the card comes near the screen.
   useEffect(() => {
